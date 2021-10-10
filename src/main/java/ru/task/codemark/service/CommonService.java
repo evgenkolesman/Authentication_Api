@@ -7,7 +7,6 @@ import ru.task.codemark.repository.RoleRepository;
 import ru.task.codemark.repository.UsersRepository;
 import ru.task.codemark.util.Validate;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +15,6 @@ import static java.util.stream.StreamSupport.stream;
 @Service
 public class CommonService {
 
-
     private final UsersRepository users;
     private final RoleRepository roles;
 
@@ -24,7 +22,6 @@ public class CommonService {
         this.users = users;
         this.roles = roles;
     }
-
 
     public List<User> findAllUsers() {
         return stream(
@@ -37,25 +34,16 @@ public class CommonService {
     }
 
     public User saveUser(User user) {
-        if (Validate.validate(user.getPassword())) {
-//            if(user.getRoles().isEmpty()) {
-//                user.setRoles(Collections.singleton(findAllRole().get(0)));
-//            }
-            users.save(user);
-            return user;
-        } else
-            return null;
+           return users.save(user);
     }
 
     public void deleteUser(User user) {
         users.delete(user);
     }
 
-
     public List<Role> findAllRole() {
         return stream(
                 this.roles.findAll().spliterator(), false
         ).collect(Collectors.toList());
     }
-
 }

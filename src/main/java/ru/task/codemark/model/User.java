@@ -39,7 +39,6 @@ public class User {
     @ManyToMany
     @JoinTable(name="roles_users",
             joinColumns = {@JoinColumn(name="users_login")}, inverseJoinColumns = {@JoinColumn(name="roles_id")})
-    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private Set<Role> roles;
 
     public static User of(String name, String password, String login) {
