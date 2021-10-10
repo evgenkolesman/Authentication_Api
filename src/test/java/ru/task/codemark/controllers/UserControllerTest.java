@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.task.codemark.CodemarkApplication;
+import ru.task.codemark.CodemarkApplicationForTest;
 import ru.task.codemark.model.Role;
 import ru.task.codemark.model.User;
 import ru.task.codemark.repository.RoleRepository;
@@ -29,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@SpringBootTest(classes = CodemarkApplication.class)
+@SpringBootTest(classes = CodemarkApplicationForTest.class)
 @AutoConfigureMockMvc
 class UserControllerTest {
 
@@ -90,7 +91,7 @@ class UserControllerTest {
     @Test
     void createTestCorrectPasswordWithNull() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
-        var user = new User("Vasya", "Vasya1" , "P1", null);
+        var user = new User("Vasya", "Vasya1", "P1", Set.of(new Role()));
         when(service.findAllRole()).thenReturn(Collections.singletonList(Role.of("U")));
         String req = mapper.writer().writeValueAsString(user);
         this.mvc.perform(post("/user/").contentType("application/json")
@@ -147,9 +148,6 @@ class UserControllerTest {
 
     @Test
     void deleteTest() throws Exception {
-        Set<Role> set = Set.of(Role.of(1L, "user"), Role.of(2L, "admin"));
-        var user = new User("a", "Vasya1" , "P1", set);
-
         this.mvc.perform(delete("/user/a"))
                 .andDo(print())
                 .andExpect(status().isOk());

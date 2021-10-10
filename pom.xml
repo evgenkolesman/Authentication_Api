@@ -9,30 +9,6 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <profiles>
-        <profile>
-            <id>test</id>
-            <properties>
-                <db.url>jdbc:h2:mem:test</db.url>
-                <db.username></db.username>
-                <db.password></db.password>
-                <db.driver>org.h2.Driver</db.driver>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>production</id>
-            <properties>
-                <db.url>jdbc:postgresql://127.0.0.1:5433/codemark</db.url>
-                <db.username>postgres</db.username>
-                <db.password>PassworD1</db.password>
-                <db.driver>org.postgresql.Driver</db.driver>
-            </properties>
-        </profile>
-    </profiles>
-
     <groupId>com.example</groupId>
     <artifactId>Codemark</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -72,13 +48,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.198</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
