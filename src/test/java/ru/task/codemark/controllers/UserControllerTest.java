@@ -65,7 +65,7 @@ class UserControllerTest {
         var user = User.of("Vasya", "V2", "p1");
         when(service.findByLogin(user.getLogin())).thenReturn(user);
         String req = mapper.writer().writeValueAsString(user);
-        this.mvc.perform(get("/user/a").contentType("application/json")
+        this.mvc.perform(get("/user/p1").contentType("application/json")
                         .content(req))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
