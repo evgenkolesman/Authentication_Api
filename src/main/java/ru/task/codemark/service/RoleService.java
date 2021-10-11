@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.task.codemark.model.Role;
 import ru.task.codemark.repository.RoleRepository;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,9 +28,9 @@ public class RoleService {
     }
 
     public List<Role> findAllRole() {
-        return stream(
+        return new LinkedList<>(stream(
                 this.roles.findAll().spliterator(), false
-        ).collect(Collectors.toList());
+        ).collect(Collectors.toList()));
     }
 
     public Role findById(Long id) {

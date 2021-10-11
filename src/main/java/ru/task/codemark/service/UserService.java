@@ -5,6 +5,7 @@ import ru.task.codemark.model.User;
 import ru.task.codemark.model.UserReport;
 import ru.task.codemark.repository.UsersRepository;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class UserService {
         List<User> list = stream(
                 this.users.findAll().spliterator(), false
         ).collect(Collectors.toList());
-        return list.stream().map(UserReport::of).collect(Collectors.toList());
+        return new LinkedList<>(list.stream().map(UserReport::of).collect(Collectors.toList()));
 
     }
 
