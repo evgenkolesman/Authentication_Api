@@ -9,6 +9,14 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Базовая сушность Роли
+ * согласно ТЗ:
+ * "Атрибуты роли – id (первичный ключ), Имя".
+ *
+ */
+
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor

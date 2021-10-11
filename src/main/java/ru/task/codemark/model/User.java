@@ -5,11 +5,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
+
+/**
+ * Базовая сущность Пользователи
+ * согласно ТЗ:
+ * "Атрибуты пользователя - Имя, Логин (первичный ключ),
+ * Пароль (шифровать пароль в рамках тестового задания не требуется, это просто строка)."
+ * связь согласно заданию выбрана ManyToMany
+ *
+ */
 
 @Entity
 @NoArgsConstructor
@@ -37,8 +45,8 @@ public class User {
     @Getter
     @Setter
     @ManyToMany
-    @JoinTable(name="roles_users",
-            joinColumns = {@JoinColumn(name="users_login")}, inverseJoinColumns = {@JoinColumn(name="roles_id")})
+    @JoinTable(name = "roles_users",
+            joinColumns = {@JoinColumn(name = "users_login")}, inverseJoinColumns = {@JoinColumn(name = "roles_id")})
     private Set<Role> roles;
 
     public static User of(String name, String password, String login) {
@@ -48,15 +56,6 @@ public class User {
         user.password = password;
         return user;
     }
-
-//    public static User of(String name, String password, String login, Set<Role> roles) {
-//        User user = new User();
-//        user.login = login;
-//        user.name = name;
-//        user.password = password;
-//        user.roles = roles;
-//        return user;
-//    }
 
     @Override
     public boolean equals(Object o) {
