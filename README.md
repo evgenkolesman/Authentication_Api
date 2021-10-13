@@ -1,4 +1,9 @@
-Описание:
+Build status:
+
+[![Build Status](https://app.travis-ci.com/evgenkolesman/Codemark.svg?branch=master)](https://app.travis-ci.com/github/evgenkolesman/Codemark)
+
+Описание:       
+
 
 BooksRestService - REST сервис для работы с сущностями "Role", "User" согласно задания.
 (задание - task.md) Для работы приложения используется PostgreSQL.
