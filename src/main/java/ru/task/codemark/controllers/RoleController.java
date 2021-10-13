@@ -32,10 +32,8 @@ public class RoleController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<Role> findAll() {
-        return new ResponseEntity<>(
-                service.findAllRole().isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK
-        );
+    public String findAll() {
+        return service.findAllRole().toString();
     }
 
     @PostMapping("/")

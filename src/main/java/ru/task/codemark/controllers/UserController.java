@@ -1,12 +1,12 @@
 package ru.task.codemark.controllers;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.task.codemark.model.User;
 import ru.task.codemark.service.UserService;
 import ru.task.codemark.util.exceptions.Result;
 
+import static org.springframework.http.ResponseEntity.ok;
 import static ru.task.codemark.util.Validate.validate;
 import static ru.task.codemark.util.exceptions.ExceptionName.*;
 
@@ -37,17 +37,13 @@ public class UserController {
 
 
     @GetMapping("/")
-    public ResponseEntity<User> findAll() {
-        return new ResponseEntity<>(
-                service.findAllUsers().isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK
-        );
+    public String findAll() {
+        return service.findAllUsers().toString();
     }
 
     @GetMapping("/{login}")
-    public ResponseEntity<User> findByLogin(@PathVariable String login) {
-        return new ResponseEntity<>(
-                service.findByLogin(login) != null ? HttpStatus.OK : HttpStatus.NOT_FOUND
-        );
+    public String findByLogin(@PathVariable String login) {
+        return service.findByLogin(login).toString();
     }
 
     @PostMapping("/")
@@ -87,7 +83,7 @@ public class UserController {
         User user = service.findByLogin(login);
         if (user != null) {
             service.deleteUser(user);
-            return ResponseEntity.ok().build();
+            return ok().build();
         } else return ResponseEntity.notFound().build();
     }
 
