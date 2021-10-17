@@ -24,7 +24,6 @@ public class UserService {
 
     private static UsersRepository users;
 
-
     public UserService(UsersRepository users) {
         this.users = users;
     }
