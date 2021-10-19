@@ -12,12 +12,14 @@
     <groupId>com.example</groupId>
     <artifactId>Codemark</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Codemark</name>
-    <description>Codemark</description>
+    <name>Authenticational_Api</name>
+    <description>Authenticational_Api</description>
 
     <properties>
         <java.version>11</java.version>
     </properties>
+
+
 
     <dependencies>
         <dependency>
@@ -48,6 +50,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <version>3.1.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -56,7 +64,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <configuration>
+                    <to>
+                        <image>registry-1.docker.io/euhenios/authentication</image>
+                    </to>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
 </project>
