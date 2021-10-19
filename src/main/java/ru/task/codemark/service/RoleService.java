@@ -1,5 +1,6 @@
 package ru.task.codemark.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.task.codemark.model.Role;
 import ru.task.codemark.repository.RoleRepository;
@@ -19,13 +20,10 @@ import static java.util.stream.StreamSupport.stream;
  */
 
 @Service
+@RequiredArgsConstructor
 public class RoleService {
 
     private final RoleRepository roles;
-
-    public RoleService(RoleRepository roles) {
-        this.roles = roles;
-    }
 
     public List<Role> findAllRole() {
         return new LinkedList<>(stream(

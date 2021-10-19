@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.task.codemark.CodemarkApplication;
 import ru.task.codemark.model.Role;
 import ru.task.codemark.model.User;
-import ru.task.codemark.model.UserReport;
+import ru.task.codemark.dta.UserReport;
 import ru.task.codemark.repository.RoleRepository;
 import ru.task.codemark.repository.UsersRepository;
 import ru.task.codemark.service.UserService;

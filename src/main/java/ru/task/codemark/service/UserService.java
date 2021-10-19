@@ -1,8 +1,9 @@
 package ru.task.codemark.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.task.codemark.model.User;
-import ru.task.codemark.model.UserReport;
+import ru.task.codemark.dta.UserReport;
 import ru.task.codemark.repository.UsersRepository;
 
 import java.util.LinkedList;
@@ -20,13 +21,10 @@ import static java.util.stream.StreamSupport.stream;
  */
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    private static UsersRepository users;
-
-    public UserService(UsersRepository users) {
-        this.users = users;
-    }
+    private final UsersRepository users;
 
     public List<UserReport> findAllUsers() {
         List<User> list = stream(

@@ -1,6 +1,7 @@
 package ru.task.codemark.controllers;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,14 +23,12 @@ import ru.task.codemark.service.RoleService;
  */
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/role/")
 public class RoleController {
 
     private final RoleService service;
 
-    public RoleController(RoleService service) {
-        this.service = service;
-    }
 
     @GetMapping("/")
     public String findAll() {

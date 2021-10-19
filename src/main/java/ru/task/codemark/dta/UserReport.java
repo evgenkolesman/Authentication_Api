@@ -1,5 +1,7 @@
-package ru.task.codemark.model;
+package ru.task.codemark.dta;
 
+
+import ru.task.codemark.model.User;
 
 /**
  * Класс для отчета

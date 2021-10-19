@@ -1,5 +1,6 @@
 package ru.task.codemark.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.task.codemark.model.User;
@@ -26,15 +27,11 @@ import static ru.task.codemark.util.exceptions.ExceptionName.*;
  */
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/user/")
 public class UserController {
 
     private final UserService service;
-
-    public UserController(UserService service) {
-        this.service = service;
-    }
-
 
     @GetMapping("/")
     public String findAll() {
